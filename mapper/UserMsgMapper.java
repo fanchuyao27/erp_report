@@ -6,13 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-
-/**
- * @author yjm
- * @version 1.0.0
- * @description 用户信息
- * @createTime 2022年07月27日 9:30:00
- */
 @Mapper
 public interface UserMsgMapper {
     //通过登录名获得用户信息
