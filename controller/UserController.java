@@ -18,12 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author yjm
- * @version 1.0.0
- * @description 用户相关
- * @createTime 2022/7/19 18:04
- **/
+
 @RestController
 @Slf4j
 public class UserController {
