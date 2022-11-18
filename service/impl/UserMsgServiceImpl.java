@@ -8,12 +8,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * @author yjm
- * @version 1.0.0
- * @description 用户信息
- * @createTime 2022/7/27 10:04
- */
 @Service
 public class UserMsgServiceImpl implements UserMsgService {
     @Resource
