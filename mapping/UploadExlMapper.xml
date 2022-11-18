@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfp.mapper.UploadExlMapper">
+    <resultMap id="SaveErpMsg" type="com.sfp.entity.ErpMsg">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="supplier" jdbcType="VARCHAR" property="supplier"/>
+        <result column="date" jdbcType="DATE" property="date"/>
+        <result column="documentNo" jdbcType="VARCHAR" property="documentNo"/>
+        <result column="auditFlag" jdbcType="INTEGER" property="auditFlag"/>
+        <result column="closeFlag" jdbcType="INTEGER" property="closeFlag"/>
+        <result column="materialCode" jdbcType="VARCHAR" property="materialLongCode"/>
+        <result column="materialLongCode" jdbcType="VARCHAR" property="materialLongCode"/>
+        <result column="materialName" jdbcType="VARCHAR" property="materialName"/>
+        <result column="specificationAndModel" jdbcType="VARCHAR" property="specificationAndModel"/>
+        <result column="salesman" jdbcType="VARCHAR" property="salesman"/>
+        <result column="unit" jdbcType="VARCHAR" property="unit"/>
+        <result column="currency" jdbcType="VARCHAR" property="currency"/>
+        <result column="quantity" jdbcType="DECIMAL" property="quantity"/>
+        <result column="unitPrice" jdbcType="DECIMAL" property="unitPrice"/>
+        <result column="totalPrice" jdbcType="DECIMAL" property="totalPrice"/>
+        <result column="unitPrice" jdbcType="DECIMAL" property="unitPrice"/>
+        <result column="warehousingQuantity" jdbcType="DECIMAL" property="warehousingQuantity"/>
+        <result column="deliveryDate" jdbcType="DATE" property="deliveryDate"/>
+        <result column="auditStatus" jdbcType="VARCHAR" property="auditStatus"/>
+        <result column="reviewer" jdbcType="VARCHAR" property="reviewer"/>
+    </resultMap>
+
+    <insert id="batchSaveOrder" parameterType="com.sfp.entity.ErpMsg">
+        INSERT INTO t_order (
+            supplier
+            ,`date`
+            ,documentNo
+            ,auditFlag
+            ,closeFlag
+            ,materialCode
+            ,materialLongCode
+            ,materialName
+            ,specificationAndModel
+            ,salesman
+            ,unit
+            ,currency
+            ,quantity
+            ,unitPrice
+            ,totalPrice
+            ,warehousingQuantity
+            ,deliveryDate
+            ,auditStatus
+            ,reviewer
+        ) VALUES
+        <foreach collection="list" item="rec" separator=",">
+            (
+                #{rec.supplier}
+                ,#{rec.date}
+                ,#{rec.documentNo}
+                ,#{rec.auditFlag}
+                ,#{rec.closeFlag}
+                ,#{rec.materialCode}
+                ,#{rec.materialLongCode}
+                ,#{rec.materialName}
+                ,#{rec.specificationAndModel}
+                ,#{rec.salesman}
+                ,#{rec.unit}
+                ,#{rec.currency}
+                ,#{rec.quantity}
+                ,#{rec.unitPrice}
+                ,#{rec.totalPrice}
+                ,#{rec.warehousingQuantity}
+                ,#{rec.deliveryDate}
+                ,#{rec.auditStatus}
+                ,#{rec.reviewer}
+            )
+        </foreach>
+    </insert>
+
+    <select id="getDocNo" resultType="java.lang.String">
+        SELECT
+	        documentNo
+        FROM
+            t_order
+        WHERE
+            PERIOD_DIFF(date_format(now(), '%Y%m'), date_format(`date`, '%Y%m')) IN (2, 1)
+    </select>
+</mapper>

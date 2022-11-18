@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfp.mapper.UserMsgMapper">
+    <resultMap id="UserMsgResultSet" type="com.sfp.entity.UserMsg">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="loginName" jdbcType="VARCHAR" property="loginName" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="role" jdbcType="VARCHAR" property="role" />
+    </resultMap>
+
+    <select id="getUserMsgByLoginName" parameterType="String" resultMap="UserMsgResultSet">
+        SELECT * FROM `user` WHERE loginName = #{loginName}
+    </select>
+
+    <select id="getUserMsgByUsername" parameterType="String" resultMap="UserMsgResultSet">
+        SELECT * FROM `user` WHERE username = #{username}
+    </select>
+
+    <select id="getAllUserMsg" parameterType="String" resultMap="UserMsgResultSet">
+        SELECT * FROM `user`
+    </select>
+
+    <select id="isExistByLoginName" parameterType="String" resultType="java.lang.Boolean">
+        SELECT IF(count(*) = 0, false, true) FROM `user` WHERE loginName = #{loginName}
+    </select>
+
+    <select id="isExistByUsername" parameterType="String" resultType="java.lang.Boolean">
+        SELECT IF(count(*) = 0, false, true) FROM `user` WHERE username = #{username}
+    </select>
+
+    <insert id="insertUser" parameterType="com.sfp.entity.UserMsg">
+        INSERT INTO `user` (username, loginName, password, role)
+        VALUES (#{userMsg.username}, #{userMsg.loginName}, #{userMsg.password}, #{userMsg.role})
+    </insert>
+
+    <update id="updateUser" parameterType="com.sfp.entity.UserMsg">
+        UPDATE `user`
+        SET username = #{userMsg.username}
+            ,loginName = #{userMsg.loginName}
+            ,role = #{userMsg.role}
+        WHERE id = #{userMsg.id}
+    </update>
+
+    <update id="updatePassword">
+        UPDATE `user` SET `password` = #{password} WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="INTEGER">
+        DELETE FROM `user` WHERE id = #{id}
+    </delete>
+</mapper>
