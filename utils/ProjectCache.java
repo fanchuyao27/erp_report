@@ -8,13 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author xl
- * @version 1.0.0
- * @ClassName ProjectCache.java
- * @Description 缓存类
- * @createTime 2022年07月21日 16:03:00
- */
 @Data
 public class ProjectCache {
     private static ProjectCache cache;
