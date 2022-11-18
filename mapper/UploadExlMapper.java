@@ -5,13 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-/**
- * @author fcy
- * @version 1.0.0
- * @description
- * @createTime 2022/9/2 14:13
- **/
-
 @Mapper
 public interface UploadExlMapper {
 
