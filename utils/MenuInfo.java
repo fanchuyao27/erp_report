@@ -3,11 +3,6 @@ package com.sfp.utils;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @Author hq
- * @Description 系统index菜单跳转信息生成的json
- * @Date 2022/7/19
- **/
 public class MenuInfo implements Serializable {
 
     public String title;
