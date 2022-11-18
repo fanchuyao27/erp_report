@@ -4,12 +4,7 @@ import com.sfp.entity.UserMsg;
 
 import java.util.List;
 
-/**
- * @author yjm
- * @version 1.0.0
- * @description 用户信息
- * @createTime 2022/7/27 10:04
- */
+
 public interface UserMsgService {
     //通过登录名获得用户信息
     UserMsg getUserMsgByLoginName(String loginName);
